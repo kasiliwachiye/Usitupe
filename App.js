@@ -1,11 +1,13 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, TextInput } from 'react-native';
 
-import MessagesScreen from './app/screens/MessagesScreen'
+import Screen from './app/components/Screen'
 
 export default function App() {
   return (
-    <MessagesScreen/>
+    <Screen>
+      <TextInput placeholder="Enter name" />
+    </Screen>
   );
 }
 
