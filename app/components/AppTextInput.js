@@ -8,7 +8,7 @@ export default function AppTextInput({icon, ...otherProps}) {
     return (
         <View style={styles.container}>
             {icon && <AntDesign name={icon} size={20} color={defaultStyles.colors.medium} style={styles.icon} />}
-            <TextInput style={defaultStyles.text} {...otherProps}/>
+            <TextInput placeholderTextColor={defaultStyles.colors.medium} style={defaultStyles.text} {...otherProps}/>
         </View>
     )
 }
