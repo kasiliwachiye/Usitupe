@@ -23,7 +23,6 @@ export default function AccountScreen() {
             <View>
                 <ListItem title="Logout" IconComponent={<Icon name="logout" backgroundColor="#ffe66d"/>} />
             </View>
-
         </Screen>
     )
 }
