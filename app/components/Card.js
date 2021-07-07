@@ -4,7 +4,7 @@ import { Image, StyleSheet, View } from 'react-native'
 import colors from '../config/colors'
 import AppText from './AppText'
 
-export default function Card(image, title, subtitle) {
+export default function Card({image, title, subtitle}) {
     return (
         <View style={styles.card}>
             <Image style={styles.image} source={image}/>
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
         width: "100%",
         height: 200
     },
-    subtitle:{
+    subtitle: {
         color: colors.secondary,
         fontWeight: "bold"
     },
