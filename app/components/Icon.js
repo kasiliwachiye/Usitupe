@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
+import { View } from 'react-native'
 import { AntDesign } from '@expo/vector-icons';
 
 import colors from '../config/colors'
@@ -11,5 +11,3 @@ export default function Icon({name, size = 40, backgroundColor = colors.black, i
         </View>
     )
 }
-
-const styles = StyleSheet.create({})

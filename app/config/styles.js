@@ -1,4 +1,3 @@
-import React from 'react'
 import { Platform } from 'react-native'
 
 import colors from './colors'
@@ -11,4 +10,3 @@ export default {
         color: colors.dark        
     }
 }
-

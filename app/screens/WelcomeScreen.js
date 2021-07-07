@@ -14,7 +14,7 @@ export default function WelcomeScreen() {
             </View>
             <View style={styles.buttonContainer}>
                 <AppButton title="Login"></AppButton>
-                <AppButton title="Register" color="secondary"></AppButton>
+                <AppButton title="Register" color={colors.secondary}></AppButton>
             </View>
         </ImageBackground>
     )
