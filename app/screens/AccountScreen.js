@@ -7,7 +7,7 @@ import colors from '../config/colors'
 import Icon from '../components/Icon'
 import ListItemSeparator from '../components/ListItemSeparator'
 
-const menuItems = [{title: "My listings", icon: {name: "profile", backgroundColor: colors.primary}},{title: "My messages", icon: {name: "mail", backgroundColor: colors.secondary}}]
+const menuItems = [{title: "My listings", icon: {name: "format-list-bulleted", backgroundColor: colors.primary}},{title: "My messages", icon: {name: "message", backgroundColor: colors.secondary}}]
 
 export default function AccountScreen() {
     return (

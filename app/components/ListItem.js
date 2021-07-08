@@ -1,7 +1,7 @@
 import React from 'react'
 import { Image, StyleSheet, View, TouchableHighlight } from 'react-native'
 import Swipeable from 'react-native-gesture-handler/Swipeable'
-import { AntDesign } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import colors from '../config/colors'
 import AppText from './AppText'
@@ -19,7 +19,7 @@ export default function ListItem({image, title, subtitle, IconComponent, onPress
                         {/* Purely to improve visual appearance of a list title property in the event that a subtitle is missing so as to have it vertically aligned at the center */}
                         {subtitle && <AppText style={styles.subtitle} numberOfLines={2} >{subtitle}</AppText>}
                     </View>
-                    <AntDesign name="right" size={15} color={colors.medium} />
+                    <MaterialCommunityIcons name="chevron-right" size={15} color={colors.medium} />
                 </View>
             </TouchableHighlight>
         </Swipeable>
