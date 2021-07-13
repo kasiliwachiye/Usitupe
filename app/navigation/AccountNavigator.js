@@ -7,8 +7,10 @@ import MessagesScreen from '../screens/MessagesScreen'
 const Stack = createStackNavigator()
 
 export default function AccountNavigator() {
-    <Stack.Navigator>
-        <Stack.Screen name="Account" component={AccountScreen} />
-        <Stack.Screen name="Messages" component={MessagesScreen} />
-    </Stack.Navigator>
+    return (
+        <Stack.Navigator>
+            <Stack.Screen name="Account" component={AccountScreen} />
+            <Stack.Screen name="Messages" component={MessagesScreen} />
+        </Stack.Navigator>
+    )
 }
