@@ -7,9 +7,9 @@ import colors from '../config/colors'
 import Icon from '../components/Icon'
 import ListItemSeparator from '../components/ListItemSeparator'
 
-const menuItems = [{title: "My listings", icon: {name: "format-list-bulleted", backgroundColor: colors.primary}},{title: "My messages", icon: {name: "message", backgroundColor: colors.secondary}}]
+const menuItems = [ {title: "My listings", icon: {name: "format-list-bulleted", backgroundColor: colors.primary}}, { title: "My messages", icon: {name: "message", backgroundColor: colors.secondary}, targetScreen: "Messages" } ]
 
-export default function AccountScreen() {
+export default function AccountScreen({ navigation }) {
     return (
         <Screen style={styles.screen}>
             <View style={styles.container}>
@@ -17,7 +17,7 @@ export default function AccountScreen() {
             </View>
 
             <View style={styles.container}>
-                <FlatList data={menuItems} keyExtractor={(menuItem) => menuItem.title} ItemSeparatorComponent={ListItemSeparator} renderItem={({item}) => <ListItem title={item.title} IconComponent={<Icon name={item.icon.name} backgroundColor={item.icon.backgroundColor} />} />} />
+                <FlatList data={menuItems} keyExtractor={(menuItem) => menuItem.title} ItemSeparatorComponent={ListItemSeparator} renderItem={({item}) => (<ListItem title={item.title} IconComponent={<Icon name={item.icon.name} backgroundColor={item.icon.backgroundColor} />} onPress={() => navigation.navigate(item.targetScreen)} />)} />
             </View>
 
             <View>

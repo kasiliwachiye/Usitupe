@@ -3,7 +3,7 @@ import { ImageBackground, StyleSheet, View, Image, Text } from 'react-native'
 
 import AppButton from '../components/AppButton'
 
-export default function WelcomeScreen() {
+export default function WelcomeScreen({ navigation }) {
     return (
         <ImageBackground style={styles.background} source={require('../assets/WelcomeScreenImage.jpg')}>
             <View style={styles.logoContainer}>
@@ -11,8 +11,8 @@ export default function WelcomeScreen() {
                 <Text style={styles.tagline}>Usitupe, Peana</Text>
             </View>
             <View style={styles.buttonContainer}>
-                <AppButton title="Login"></AppButton>
-                <AppButton title="Register" color="secondary"></AppButton>
+                <AppButton title="Login" onPress={() => navigation.navigate("Login")} />
+                <AppButton title="Register" color="secondary" onPress={() => navigation.navigate("Register")} />
             </View>
         </ImageBackground>
     )

@@ -5,15 +5,17 @@ import AppText from '../components/AppText'
 import ListItem from '../components/ListItem'
 import colors from '../config/colors'
 
-export default function ListingDetailsScreen() {
+export default function ListingDetailsScreen({ route }) {
+    const listing = route.params
+
     return (
         <View>
-            <Image style={styles.image} source={require('../assets/soaps.jpg')} />
+            <Image style={styles.image} source={listing.image} />
             <View style={styles.detailsContainer}>
-                <AppText style={styles.title}>Soaps and detergents</AppText>
-                <AppText style={styles.price}>Ksh 300</AppText>
+                <AppText style={styles.title}>{listing.title}</AppText>
+                <AppText style={styles.price}>Ksh {listing.price}</AppText>
                 <View style={styles.userContainer}>
-                    <ListItem image={require('../assets/em.jpg')} title="Kasili Wachiye" subtitle='5 listings'  />
+                    <ListItem image={require('../assets/em.jpg')} title="Kasili Wachiye" subtitle='3 listings'  />
                 </View>
             </View>
         </View>
