@@ -9,7 +9,15 @@ export default function AppFormPicker({ items, name, numberOfColumns, PickerItem
 
     return (
         <React.Fragment>
-            <AppPicker items={items} numberOfColumns={numberOfColumns} onSelectItem={(item) => setFieldValue(name,item)} PickerItemComponent={PickerItemComponent} placeholder={placeholder} selectedItem={values[name]} width={width} />
+            <AppPicker 
+                items={items} 
+                numberOfColumns={numberOfColumns} 
+                onSelectItem={(item) => setFieldValue(name,item)} 
+                PickerItemComponent={PickerItemComponent} 
+                placeholder={placeholder} 
+                selectedItem={values[name]} 
+                width={width}
+            />
             <ErrorMessage error={errors[name]} visible={touched[name]} />
         </React.Fragment>
     )

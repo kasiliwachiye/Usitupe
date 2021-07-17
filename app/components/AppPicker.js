@@ -21,7 +21,7 @@ export default function AppPicker({icon, items, numberOfColumns = 1, onSelectIte
             </TouchableWithoutFeedback>
             <Modal visible={modalVisible} animationType='slide'>
                 <Screen>
-                    <Button title='close' onPress={() => setModalVisible(false)}/>
+                    <Button title='Close' onPress={() => setModalVisible(false)}/>
                     <FlatList data={items} keyExtractor={(item) => item.value.toString()} numColumns={numberOfColumns} renderItem={({item}) => (<PickerItemComponent item={item} label={item.label} onPress={() => {setModalVisible(false); onSelectItem(item)}} />) } />                    
                 </Screen>
             </Modal>
