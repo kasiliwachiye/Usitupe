@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { StyleSheet, FlatList } from 'react-native'
 
 import ActivityIndicator from '../components/ActivityIndicator'
@@ -15,7 +15,7 @@ export default function ListingsScreen({ navigation }) {
     const getListingsApi = useApi(listingsApi.getListings)
     
     useEffect(() => {
-        getListingsApi.request(1, 2, 3)
+        getListingsApi.request()
      }, [])
 
     return (
@@ -36,7 +36,8 @@ export default function ListingsScreen({ navigation }) {
                     title={item.title} 
                     subtitle={"Ksh " + item.price} 
                     imageUrl={item.images[0].url} 
-                    onPress={() => navigation.navigate(routes.LISTING_DETAILS, item)} 
+                    onPress={() => navigation.navigate(routes.LISTING_DETAILS, item)}
+                    thumbnailUrl={item.images[0].thumbnailUrl}
                     />
                 )}
                 />

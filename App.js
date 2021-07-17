@@ -1,10 +1,11 @@
-import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
+import React from 'react';
 
-import navigationTheme from './app/navigation/navigationTheme';
-import AppNavigator from './app/navigation/AppNavigator';
 // to silence the faux error
 import { LogBox } from 'react-native';
+import OfflineNotice from './app/components/OfflineNotice';
+import AppNavigator from './app/navigation/AppNavigator';
+import navigationTheme from './app/navigation/navigationTheme';
 LogBox.ignoreLogs([
   "It appears that you are using old version of react-navigation library",
 ]);
@@ -12,8 +13,11 @@ LogBox.ignoreLogs([
 
 export default function App() {
   return (
-    <NavigationContainer theme={navigationTheme}>
-      <AppNavigator />
-    </NavigationContainer>
-  );
+    <React.Fragment>
+      <OfflineNotice />
+      <NavigationContainer theme={navigationTheme}>
+        <AppNavigator/>
+      </NavigationContainer>
+    </React.Fragment>
+  )
 }
