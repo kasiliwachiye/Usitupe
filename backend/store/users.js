@@ -1,9 +1,9 @@
 const users = [
 	{
 		id: 1,
-		name: "Nathan",
-		email: "nathan@domain.com",
-		password: "12345",
+		name: "Kasili",
+		email: "wachiye47@gmail.com",
+		password: "RabbitHole4747",
 	},
 	{
 		id: 2,
