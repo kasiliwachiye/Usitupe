@@ -1,27 +1,51 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { StyleSheet, FlatList, View } from 'react-native'
 
-import Screen from '../components/Screen'
-import ListItem from '../components/ListItem'
+import AuthContext from '../auth/context'
 import colors from '../config/colors'
+import Screen from '../components/Screen'
 import Icon from '../components/Icon'
+import ListItem from '../components/ListItem'
 import ListItemSeparator from '../components/ListItemSeparator'
 
 const menuItems = [ {title: "My listings", icon: {name: "format-list-bulleted", backgroundColor: colors.primary}}, { title: "My messages", icon: {name: "message", backgroundColor: colors.secondary}, targetScreen: "Messages" } ]
 
 export default function AccountScreen({ navigation }) {
+    const { user, setUser } = useContext(AuthContext)
+
     return (
         <Screen style={styles.screen}>
             <View style={styles.container}>
-                <ListItem image={require('../assets/em.jpg')} title="Kasili Wachiye" subtitle="wachiye25@gmail.com" />
+                <ListItem 
+                    image={require('../assets/em.jpg')} 
+                    title={user.name} 
+                    subtitle={user.email} 
+                />
             </View>
 
             <View style={styles.container}>
-                <FlatList data={menuItems} keyExtractor={(menuItem) => menuItem.title} ItemSeparatorComponent={ListItemSeparator} renderItem={({item}) => (<ListItem title={item.title} IconComponent={<Icon name={item.icon.name} backgroundColor={item.icon.backgroundColor} />} onPress={() => navigation.navigate(item.targetScreen)} />)} />
+                <FlatList 
+                    data={menuItems} 
+                    keyExtractor={(menuItem) => menuItem.title} 
+                    ItemSeparatorComponent={ListItemSeparator} 
+                    renderItem={({item}) => (
+                        <ListItem 
+                            title={item.title} 
+                            IconComponent={
+                                <Icon name={item.icon.name} backgroundColor={item.icon.backgroundColor} />
+                            } 
+                            onPress={() => navigation.navigate(item.targetScreen)} 
+                        />
+                    )}
+                />
             </View>
 
             <View>
-                <ListItem title="Logout" IconComponent={<Icon name="logout" backgroundColor="#ffe66d"/>} />
+                <ListItem 
+                    title="Logout" 
+                    IconComponent={<Icon name="logout" backgroundColor="#ffe66d"/>} 
+                    onPress={() => setUser(null)}    
+                />
             </View>
         </Screen>
     )
