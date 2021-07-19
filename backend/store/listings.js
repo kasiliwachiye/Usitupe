@@ -3,7 +3,7 @@ const listings = [
 		id: 201,
 		title: "Red Jacket",
 		images: [{ fileName: "jacket1" }],
-		price: 100,
+		price: 1999,
 		categoryId: 5,
 		userId: 1,
 		location: {
@@ -13,10 +13,10 @@ const listings = [
 	},
 	{
 		id: 3,
-		title: "Gray Couch in a Good condition",
+		title: "Grey Couch",
 		images: [{ fileName: "couch2" }],
 		categoryId: 1,
-		price: 1200,
+		price: 32500,
 		userId: 2,
 		location: {
 			latitude: 37.78825,
@@ -33,7 +33,7 @@ const listings = [
 			{ fileName: "couch2" },
 			{ fileName: "couch3" },
 		],
-		price: 1000,
+		price: 50000,
 		categoryId: 1,
 		userId: 1,
 		location: {
@@ -43,10 +43,10 @@ const listings = [
 	},
 	{
 		id: 2,
-		title: "Designer Wear Shoes",
+		title: "Brown Oxfords",
 		images: [{ fileName: "shoes1" }],
 		categoryId: 5,
-		price: 100,
+		price: 1999,
 		userId: 2,
 		location: {
 			latitude: 37.78825,
@@ -57,7 +57,7 @@ const listings = [
 		id: 102,
 		title: "Canon 400D (Great Condition)",
 		images: [{ fileName: "camera1" }],
-		price: 300,
+		price: 30000,
 		categoryId: 3,
 		userId: 1,
 		location: {
@@ -69,7 +69,7 @@ const listings = [
 		id: 101,
 		title: "Nikon D850 for sale",
 		images: [{ fileName: "camera2" }],
-		price: 350,
+		price: 35000,
 		categoryId: 3,
 		userId: 1,
 		location: {
@@ -83,7 +83,7 @@ const listings = [
 		description: "No rips no stains no odors",
 		images: [{ fileName: "couch3" }],
 		categoryId: 1,
-		price: 950,
+		price: 40000,
 		userId: 2,
 		location: {
 			latitude: 37.78825,
@@ -92,10 +92,10 @@ const listings = [
 	},
 	{
 		id: 6,
-		title: "Brown Leather Shoes",
+		title: "Clown Shoes",
 		images: [{ fileName: "shoes2" }],
 		categoryId: 5,
-		price: 50,
+		price: 1200,
 		userId: 2,
 		location: {
 			latitude: 37.78825,

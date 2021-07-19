@@ -9,7 +9,7 @@ export default function WelcomeScreen({ navigation }) {
         <ImageBackground style={styles.background} source={require('../assets/WelcomeScreenImage.jpg')}>
             <View style={styles.logoContainer}>
                 <Image style={styles.logo} source={require('../assets/logo.png')} />
-                <Text style={styles.tagline}>Usitupe, Peana</Text>
+                <Text style={styles.tagline}>Usitupe</Text>
             </View>
             <View style={styles.buttonContainer}>
                 <AppButton title="Login" onPress={() => navigation.navigate("Login")} />
@@ -39,8 +39,8 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     tagline: {
-        fontSize: 30,
+        fontSize: 25,
         color: "white",
-        paddingTop: 20
+        paddingTop: 10
     }    
 })
