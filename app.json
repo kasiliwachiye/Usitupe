@@ -28,5 +28,7 @@
     "web": {
       "favicon": "./app/assets/favicon.png"
     }
-  }
+  }, 
+  "description": "A place to clear out your garagewith things you don't need",
+  "iosDisplayInForeground": true
 }

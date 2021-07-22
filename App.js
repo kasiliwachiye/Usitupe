@@ -10,10 +10,10 @@ import { LogBox } from 'react-native';
 import OfflineNotice from './app/components/OfflineNotice';
 import navigationTheme from './app/navigation/navigationTheme';
 import authStorage from './app/auth/storage';
+import { navigationRef } from './app/navigation/rootNavigation';
 
 LogBox.ignoreLogs([
   "It appears that you are using old version of react-navigation library",
-  "InvalidTokenError"
 ]);
 
 
@@ -32,7 +32,7 @@ export default function App() {
   return (
     <AuthContext.Provider value={{user, setUser}}>
       <OfflineNotice />
-      <NavigationContainer theme={navigationTheme}>
+      <NavigationContainer ref={navigationRef} theme={navigationTheme}>
         {user? <AppNavigator/> :<AuthNavigator/>}
       </NavigationContainer>
     </AuthContext.Provider>
