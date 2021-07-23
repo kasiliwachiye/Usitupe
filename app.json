@@ -27,8 +27,21 @@
     },
     "web": {
       "favicon": "./app/assets/favicon.png"
+    },
+    "extra": {
+      "bugsnag": {
+        "apiKey": "81cbf12339ec9fe1c5a8df033bed3791"
+      }
+    },
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "@bugsnag/expo/hooks/post-publish.js",
+          "config": {}
+        }
+      ]
     }
-  }, 
+  },
   "description": "A place to clear out your garagewith things you don't need",
   "iosDisplayInForeground": true
 }
