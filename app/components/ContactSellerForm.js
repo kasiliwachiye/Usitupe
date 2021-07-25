@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Keyboard, Alert } from 'react-native'
 import * as Yup from 'yup'
-import { Notifications } from 'expo'
+import * as Notifications from 'expo-notifications'
 
 import messages from '../api/messages'
 import AppForm from '../components/forms/AppForm'

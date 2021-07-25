@@ -2,6 +2,7 @@
   "expo": {
     "name": "Usitupe",
     "slug": "Usitupe",
+    "platforms": ["ios", "android", "web"],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./app/assets/icon.png",
@@ -17,13 +18,15 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.kasiliwachiye.Usitupe"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./app/assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.kasiliwachiye.Usitupe"
     },
     "web": {
       "favicon": "./app/assets/favicon.png"
@@ -32,16 +35,10 @@
       "bugsnag": {
         "apiKey": "81cbf12339ec9fe1c5a8df033bed3791"
       }
-    },
-    "hooks": {
-      "postPublish": [
-        {
-          "file": "@bugsnag/expo/hooks/post-publish.js",
-          "config": {}
-        }
-      ]
     }
   },
-  "description": "A place to clear out your garagewith things you don't need",
-  "iosDisplayInForeground": true
+  "description": "A place to clear out your garage with things you don't need",
+  "notification": {
+    "iosDisplayInForeground": true
+  }
 }

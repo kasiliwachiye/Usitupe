@@ -1,27 +1,60 @@
-import { useEffect } from 'react'
-import { Notifications } from 'expo'
-import {  Permissions } from 'expo-permissions'
+import { useEffect, useRef, useState } from "react";
+import * as Notifications from 'expo-notifications'
 
-import expoPushTokens from '../api/expoPushTokens'
+import expoPushTokensApi from "../api/expoPushTokens";
 
-export default useNotifications = (notificationListener) => {
+// Required
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: true,
+    shouldSetBadge: false,
+  }),
+});
+
+export default useNotifications = () => {
+  const [notification, setNotification] = useState(false);
+  const notificationListener = useRef();
+  const responseListener = useRef();
+
+  useEffect(() => {
+    registerForPushNotifications();
+
+    // This listener is fired whenever a notification is received while the app is foregrounded
+    notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
+        setNotification(notification);
+    });
+
+    // This listener is fired whenever a user taps on or interacts with a notification (works when app is foregrounded, backgrounded, or killed)
+    responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
+        console.log(response.notification.request.content.body);
+    });
+
+    return () => {
+        Notifications.removeNotificationSubscription(notificationListener.current);
+        Notifications.removeNotificationSubscription(responseListener.current);
+    };
+
+}, []);
+
     
-    useEffect(() => {
-        registerForPushNotifications()
-
-        if (notificationListener) Notifications.addListener(notificationListener)
-
-    }, [])
-
-    const registerForPushNotifications = async () => {
-        try {
-            const permission = await Permissions.askAsync(Permissions.NOTIFICATIONS)
-            if(!permission.granted) return;
-            const token = await Notifications.getExpoPushTokenAsync()
-            expoPushTokens.register(token)            
-        } catch (error) {
-            console.log("Error getting a push token", error);
+const registerForPushNotifications = async () => {
+   try {
+        const permissions = await Notifications.getPermissionsAsync();
+        if (! permissions.granted) {
+            const finalPermissions = await Notifications.requestPermissionsAsync();
+            if (! finalPermissions.granted) {
+                console.log("Permissions NOT granted!");
+                return;
+            }
         }
-    }
+        console.log("Permissions granted!");
 
+        const token = await Notifications.getExpoPushTokenAsync();
+        expoPushTokensApi.register(token.data);
+
+    } catch (error) {
+        console.log("Error getting a push token", error);
+    }
+  };
 }

@@ -7,14 +7,12 @@ import { navigationRef } from './app/navigation/rootNavigation';
 import AppNavigator from './app/navigation/AppNavigator';
 import AuthContext from './app/auth/context';
 import AuthNavigator from './app/navigation/AuthNavigator';
-// import logger from './app/utility/logger';
-// to silence the faux error
 import OfflineNotice from './app/components/OfflineNotice';
 import navigationTheme from './app/navigation/navigationTheme';
 import authStorage from './app/auth/storage';
 
-// logger.start()
 
+// to silence the faux error
 LogBox.ignoreLogs([
   "It appears that you are using old version of react-navigation library",
   "InvalidTokenError"
