@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Image } from "react-native";
 import * as Yup from "yup";
 
 import ActivityIndicator from "../components/ActivityIndicator";
@@ -46,6 +46,7 @@ function RegisterScreen() {
     <React.Fragment>      
       <ActivityIndicator visible={registerApi.loading || loginApi.loading} />
       <Screen style={styles.container}>
+        <Image style={styles.logo} source={require('../assets/logo.png')}/>
         <AppForm initialValues={{ name: "", email: "", password: "" }} onSubmit={handleSubmit} validationSchema={validationSchema} >
           <AppFormField autoCorrect={false} icon="account" name="name" placeholder="Name" />
           <AppFormField autoCapitalize="none" autoCorrect={false} icon="email" keyboardType="email-address" name="email" placeholder="Email" textContentType="emailAddress" />
@@ -61,6 +62,13 @@ const styles = StyleSheet.create({
   container: {
     padding: 10,
   },
+  logo: {
+      width: 80,
+      height: 80,
+      alignSelf: 'center',
+      marginTop: 50,
+      marginBottom: 20
+  }
 });
 
 export default RegisterScreen;

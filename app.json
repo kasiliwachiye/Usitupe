@@ -2,6 +2,7 @@
   "expo": {
     "name": "Usitupe",
     "slug": "Usitupe",
+    "privacy": "public", 
     "platforms": ["ios", "android", "web"],
     "version": "1.0.0",
     "orientation": "portrait",
@@ -26,7 +27,8 @@
         "foregroundImage": "./app/assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.kasiliwachiye.Usitupe"
+      "package": "com.kasiliwachiye.Usitupe",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./app/assets/favicon.png"
