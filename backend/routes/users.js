@@ -1,30 +1,30 @@
-const express = require("express");
-const router = express.Router();
-const Joi = require("joi");
-const usersStore = require("../store/users");
-const validateWith = require("../middleware/validation");
+import { Router } from "express";
+const router = Router();
+import { string } from "joi";
+import { getUserByEmail, addUser, getUsers } from "../store/users";
+import validateWith from "../middleware/validation";
 
 const schema = {
-	name: Joi.string().required().min(2),
-	email: Joi.string().email().required(),
-	password: Joi.string().required().min(5),
+  name: string().required().min(2),
+  email: string().email().required(),
+  password: string().required().min(5),
 };
 
 router.post("/", validateWith(schema), (req, res) => {
-	const { name, email, password } = req.body;
-	if (usersStore.getUserByEmail(email))
-		return res
-			.status(400)
-			.send({ error: "A user with the given email already exists." });
+  const { name, email, password } = req.body;
+  if (getUserByEmail(email))
+    return res
+      .status(400)
+      .send({ error: "A user with the given email already exists." });
 
-	const user = { name, email, password };
-	usersStore.addUser(user);
+  const user = { name, email, password };
+  addUser(user);
 
-	res.status(201).send(user);
+  res.status(201).send(user);
 });
 
 router.get("/", (req, res) => {
-	res.send(usersStore.getUsers());
+  res.send(getUsers());
 });
 
-module.exports = router;
+export default router;

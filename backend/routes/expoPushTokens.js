@@ -1,22 +1,26 @@
-const express = require("express");
-const router = express.Router();
-const Joi = require("joi");
+import { Router } from "express";
+const router = Router();
+import { string } from "joi";
+import { sign } from "jsonwebtoken";
+import { getUserByEmail } from "../store/users";
+import validateWith from "../middleware/validation";
 
-const usersStore = require("../store/users");
-const auth = require("../middleware/auth");
-const validateWith = require("../middleware/validation");
+const schema = {
+  email: string().email().required(),
+  password: string().required().min(5),
+};
 
-router.post(
-	"/",
-	[auth, validateWith({ token: Joi.string().required() })],
-	(req, res) => {
-		const user = usersStore.getUserById(req.user.userId);
-		if (!user) return res.status(400).send({ error: "Invalid user." });
+router.post("/", validateWith(schema), (req, res) => {
+  const { email, password } = req.body;
+  const user = getUserByEmail(email);
+  if (!user || user.password !== password)
+    return res.status(400).send({ error: "Invalid email or password." });
 
-		user.expoPushToken = req.body.token;
-		console.log("User registered for notifications: ", user);
-		res.status(201).send();
-	}
-);
+  const token = sign(
+    { userId: user.id, name: user.name, email },
+    "jwtPrivateKey"
+  );
+  res.send(token);
+});
 
-module.exports = router;
+export default router;

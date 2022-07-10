@@ -1,5 +1,5 @@
-const config = require("config");
+import { get } from "config";
 
-module.exports = async (req, res, next) => {
-	setTimeout(() => next(), config.get("delay"));
+export default async (req, res, next) => {
+  setTimeout(() => next(), get("delay"));
 };

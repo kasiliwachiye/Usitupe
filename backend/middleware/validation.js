@@ -1,10 +1,10 @@
-const Joi = require("joi");
+import { validate } from "joi";
 
-module.exports = (schema) => (req, res, next) => {
-	const result = Joi.validate(req.body, schema);
+export default (schema) => (req, res, next) => {
+  const result = validate(req.body, schema);
 
-	if (result.error)
-		return res.status(400).send({ error: result.error.details[0].message });
+  if (result.error)
+    return res.status(400).send({ error: result.error.details[0].message });
 
-	next();
+  next();
 };

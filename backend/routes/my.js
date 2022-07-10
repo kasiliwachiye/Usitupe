@@ -1,17 +1,16 @@
-const express = require("express");
-const router = express.Router();
+import { Router } from "express";
+const router = Router();
 
-
-const listingsStore = require("../store/listings");
-const auth = require("../middleware/auth");
-const listingMapper = require("../mappers/listings");
+import { filterListings } from "../store/listings";
+import auth from "../middleware/auth";
+import listingMapper from "../mappers/listings";
 
 router.get("/listings", auth, (req, res) => {
-	const listings = listingsStore.filterListings(
-		(listing) => listing.userId === req.user.userId
-	);
-	const resources = listings.map(listingMapper);
-	res.send(resources);
+  const listings = filterListings(
+    (listing) => listing.userId === req.user.userId
+  );
+  const resources = listings.map(listingMapper);
+  res.send(resources);
 });
 
-module.exports = router;
+export default router;
