@@ -4,7 +4,7 @@ const listings = require("./routes/listings");
 const listing = require("./routes/listing");
 const users = require("./routes/users");
 const user = require("./routes/user");
-const auth = require("./routes/auth");
+const auth = require("./routes/auth").default.default;
 const my = require("./routes/my");
 const messages = require("./routes/messages");
 const expoPushTokens = require("./routes/expoPushTokens");
@@ -30,5 +30,5 @@ app.use("/api/messages", messages);
 
 const port = process.env.PORT || config.get("port");
 app.listen(port, function () {
-	console.log(`Server started on port ${port}...`);
+  console.log(`Server started on port ${port}...`);
 });
